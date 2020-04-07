@@ -21,4 +21,20 @@ Objective of Study
 ==================
 Create a shopping list app in React that utilizes callback props to pass state between components. 
 
-So this shopping list app is going to cover the issues associated with updating the shopping list itself and utilizing callback props.
+This shopping list app is going to cover the issues associated with updating the shopping list itself and utilizing callback props. Specifically
+we'll tackle updating the state of the component in practice and utilizing callback props. This is going to cover planning and project setup as 
+well so that the workflow can be refined for the next project.
+
+
+
+
+Project outline
+================
+This is going to be a basic shopping list application, so the most essential thing the app is going to need is an input field, and submission button, and
+a list of the items that have been added. Each item will be listed and will have option of checking or deleting it.
+
+[Title of Application]
+[Input Field] [Add Item Button]
+[Item 1][Check][Delete]
+[Item 2][Check][Delete]
+[Item 3][Check][Delete]
