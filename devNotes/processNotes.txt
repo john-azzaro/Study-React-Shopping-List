@@ -20,3 +20,5 @@ one as well so I would urge you to consider at least doing a rough summary for y
 Objective of Study
 ==================
 Create a shopping list app in React that utilizes callback props to pass state between components. 
+
+So this shopping list app is going to cover the issues associated with updating the shopping list itself and utilizing callback props.
