@@ -175,6 +175,81 @@ For the ShoppingItem component, it will display individual items.
 
 
 Add tests for each of the components.
+
+Test for ShoppingItem
+------------------------------------------------------------------------------
+  import React from 'react';
+  import { shallow } from 'enzyme'
+  import toJson from 'enzyme-to-json'
+  import ShoppingItem from './ShoppingItem';
+
+  describe(`ShoppingItem component`, () => {
+    it('renders empty given no item', () => {
+      const wrapper = shallow(<ShoppingItem />)
+      expect(toJson(wrapper)).toMatchSnapshot()
+    })
+
+    it('renders the item when supplied', () => {
+      // We're adding props to the ShoppingItem for different test cases
+      const testItem = { name: 'test-item', checked: false }
+      const wrapper = shallow(<ShoppingItem item={testItem} />)
+      expect(toJson(wrapper)).toMatchSnapshot()
+    })
+
+    it('strikes through checked items', () => {
+      const testItem = { name: 'checked-item', checked: true }
+      const wrapper = shallow(<ShoppingItem item={testItem} />)
+      expect(toJson(wrapper)).toMatchSnapshot()
+    })
+  })
 ------------------------------------------------------------------------------
 
+Test for ShoppingList
 ------------------------------------------------------------------------------
+  import React from 'react';
+  import { shallow } from 'enzyme'
+  import toJson from 'enzyme-to-json'
+  import ShoppingList from './ShoppingList';
+
+  describe(`ShoppingList component`, () => {
+    it('renders empty given no items', () => {
+      const wrapper = shallow(<ShoppingList />)
+      expect(toJson(wrapper)).toMatchSnapshot()
+    })
+
+    it('renders ShoppingItems when supplied with an items prop', () => {
+      const testItems = [
+        { name: 'test item 1', checked: false },
+        { name: 'another test item', checked: true },
+        { name: 'test item number three', checked: false },
+      ]
+      const wrapper = shallow(<ShoppingList items={testItems} />)
+      expect(toJson(wrapper)).toMatchSnapshot()
+    })
+  })
+------------------------------------------------------------------------------
+
+Test for AddItem
+------------------------------------------------------------------------------
+  import React from 'react';
+  import { shallow } from 'enzyme'
+  import toJson from 'enzyme-to-json'
+  import AddItemForm from './AddItemForm';
+
+  describe(`AddItemForm component`, () => {
+    it('renders the complete form', () => {
+      const wrapper = shallow(<AddItemForm />)
+      expect(toJson(wrapper)).toMatchSnapshot()
+    })
+  })
+------------------------------------------------------------------------------
+
+
+At this point, the app has structure, three components 
+
+
+
+
+UPDATING state
+===================================
+So at this point, the app has structure, three components and the tests utilizing enzyme.
