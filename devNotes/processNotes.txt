@@ -33,8 +33,20 @@ Project outline
 This is going to be a basic shopping list application, so the most essential thing the app is going to need is an input field, and submission button, and
 a list of the items that have been added. Each item will be listed and will have option of checking or deleting it.
 
+Basic Wireframe
+=========================================
 [Title of Application]
 [Input Field] [Add Item Button]
 [Item 1][Check][Delete]
 [Item 2][Check][Delete]
 [Item 3][Check][Delete]
+
+Basic Wireframe (broken up into components)
+===========================================
+---------------------------------------        1. App component -- "App"
+[Title of Application]                 |   
+[Input Field] [Add Item Button]        |       2. Add item component -- "AddItemForm"  
+[Item 1][Check][Delete]                |       3. Shopping list -- "ShoppingList"
+[Item 2][Check][Delete]                |       4. Sopping item -- "ShoppingItem"
+[Item 3][Check][Delete]                |
+----------------------------------------
