@@ -73,33 +73,33 @@ Now for the "AddItemForm"...
 Project Implementation
 =======================
 First, tackle the App component first.
+* Checkout the use of "<>" in the JSX... this is a "fragment" that you can use instead of "div" since the div isnt really needed.
 --------------------------------------------------------------------------------
     import React from "react";                                                  // Add React
     import AddItemForm from './shopping-list/AddItemForm';                      // Import "AddItemForm".
     import ShoppingList from './shopping-list/ShoppingList';                    // IMport "ShoppingList".
 
-    class App extends React.Component {                                         // Class component "App"...
+    class App extends React.Component {                                         // Class component "App":
       state = {                                                                 // The state (where we decided the state would live since this is the lowest common ancestor)
-        shoppingItems: [
-          /* put stub items in here for testing */
+        shoppingItems: [                                                        // ... and add stub items for the app to show in demo.
           { name: 'apples', checked: false },
           { name: 'oranges', checked: true },
           { name: 'bread', checked: false },
         ]
       };
 
-      render() {
+      render() { 
         return (
-          <>
+          <>                                                                    // **use of fragment instead of div**
             <header>
               <h1>Shopping List</h1>
             </header>
             <main>
               <section>
-                <AddItemForm />
+                <AddItemForm />                                                  // AddItemForm component.
               </section>
               <section>
-                <ShoppingList items={this.state.shoppingItems} />
+                <ShoppingList items={this.state.shoppingItems} />                // ShoppingList components (with items from state).
               </section>
             </main>
           </>
