@@ -66,4 +66,45 @@ Now for the "AddItemForm"...
 1. The user willo submit the form.
 2. the onSubmit event of the form would be the trigger.
 3. The state is updated with the newly submitted shopping item.
+4. Place the state in the LOWEST COMMON ANCESTOR of the components that read and update state (in this case, "App").
+
+
+
+Project Implementation
+=======================
+First, tackle the App component first.
+--------------------------------------------------------------------------------
+    import React from "react";                                                  // Add React
+    import AddItemForm from './shopping-list/AddItemForm';                      // Import "AddItemForm".
+    import ShoppingList from './shopping-list/ShoppingList';                    // IMport "ShoppingList".
+
+    class App extends React.Component {                                         // Class component "App"...
+      state = {                                                                 // The state (where we decided the state would live since this is the lowest common ancestor)
+        shoppingItems: [
+          /* put stub items in here for testing */
+          { name: 'apples', checked: false },
+          { name: 'oranges', checked: true },
+          { name: 'bread', checked: false },
+        ]
+      };
+
+      render() {
+        return (
+          <>
+            <header>
+              <h1>Shopping List</h1>
+            </header>
+            <main>
+              <section>
+                <AddItemForm />
+              </section>
+              <section>
+                <ShoppingList items={this.state.shoppingItems} />
+              </section>
+            </main>
+          </>
+        )
+      }
+    }
+--------------------------------------------------------------------------------
 
