@@ -108,7 +108,7 @@ First, tackle the App component first.
     }
 --------------------------------------------------------------------------------
 
-For the AddItemFrom, we'll just do the basic UI for the form
+For the AddItemFrom, we'll just do the basic UI for the form.
 --------------------------------------------------------------------------------
   export default class AddItemForm extends React.Component {
     render() {
@@ -124,5 +124,51 @@ For the AddItemFrom, we'll just do the basic UI for the form
         </form>
       )
     }
+  }
+--------------------------------------------------------------------------------
+
+For the ShoppingList component, the list is going to be populated 
+--------------------------------------------------------------------------------
+  import React from 'react'
+  import ShoppingItem from './ShoppingItem'
+
+  export default function ShoppingList(props) {
+    return (
+      <ul>
+        {props.items.map((item, i) =>
+          <ShoppingItem
+            key={i}
+            item={item}
+          />
+        )}
+      </ul>
+    )
+  }
+
+  ShoppingList.defaultProps = {
+    items: []
+  }
+--------------------------------------------------------------------------------
+
+For the ShoppingItem component, it will display individual items.
+--------------------------------------------------------------------------------
+  import React from 'react'
+
+  export default function ShoppingItem(props) {
+    return (
+      <li>
+        <h2 style={{
+          textDecoration: props.item.checked ? 'line-through' : null,
+        }}>
+          {props.item.name}
+        </h2>
+        <button type='button'>check</button>
+        <button type='button'>delete</button>
+      </li>
+    )
+  }
+
+  ShoppingItem.defaultProps = {
+    item: {}
   }
 --------------------------------------------------------------------------------
