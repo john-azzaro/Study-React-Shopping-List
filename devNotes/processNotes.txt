@@ -135,7 +135,7 @@ For the ShoppingList component, the list is going to be populated
   export default function ShoppingList(props) {
     return (
       <ul>
-        {props.items.map((item, i) =>
+        {props.items.map((item, i) =>                                            // map for each shopping list item.
           <ShoppingItem
             key={i}
             item={item}
@@ -172,3 +172,9 @@ For the ShoppingItem component, it will display individual items.
     item: {}
   }
 --------------------------------------------------------------------------------
+
+
+Add tests for each of the components.
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
