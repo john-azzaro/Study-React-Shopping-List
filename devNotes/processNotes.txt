@@ -33,6 +33,9 @@ Project outline
 This is going to be a basic shopping list application, so the most essential thing the app is going to need is an input field, and submission button, and
 a list of the items that have been added. Each item will be listed and will have option of checking or deleting it.
 
+
+First, a basic wireframe...
+
 Basic Wireframe
 =========================================
 [Title of Application]
@@ -50,3 +53,17 @@ Basic Wireframe (broken up into components)
 [Item 2][Check][Delete]                |       4. Sopping item -- "ShoppingItem"
 [Item 3][Check][Delete]                |
 ----------------------------------------
+
+
+Second, consider where the state will live...
+* To consider where the state will live, you need to think about where the components will need access to the state.
+* Which components will UPDATE the state and which will READ the state.
+* In this case, the shpping items can changeby adding, deleting, or checking items. The user can also interact with the form
+  to add items and click on buttons on individual items to check and delete the items.
+* In this case, "AddItemForm" and "ShoppingItem" as places for the state to live.
+
+Now for the "AddItemForm"...
+1. The user willo submit the form.
+2. the onSubmit event of the form would be the trigger.
+3. The state is updated with the newly submitted shopping item.
+
