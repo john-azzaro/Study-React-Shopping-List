@@ -4,7 +4,7 @@ import ShoppingList from './shopping-list/ShoppingList';
 
 class App extends React.Component {
   state = {
-    shoppingItems: [                                     // Stub items
+    shoppingItems: [             
       { name: 'apples', checked: false },
       { name: 'oranges', checked: true },
       { name: 'bread', checked: false },

@@ -265,8 +265,72 @@ callback props to implement the buttons.
 
 
 First, the App component needs to give the children (i.e. ShoppingItem, AddItemForm, and ShoppingList) callback props.
+  * Callback props are functions.
+  * One callback function is given to each of the actions you need to perform.
+  * In this example, the callback functions here are the handleDeleteItem and handleCheckItem. 
+  * These props are in the "ShoppingList" prop, so they need to be passed through this component to work.
+---------------------------------------------------------------------------------
+  class App extends React.Component {
+    state = {
+      shoppingItems: [          
+        { name: 'apples', checked: false },
+        { name: 'oranges', checked: true },
+        { name: 'bread', checked: false },
+      ]
+    };
+
+    handleDeleteItem() {                                                          // 2.1 callback function for the user clicking the delete button
+      console.log('handle delete item called');
+    }
+
+    handleCheckItem() {                                                           // 2.2 callback function for the user clicking the check button
+      console.log('handle check item called');
+    }
+
+    render() {
+      return (
+        <>
+          <header>
+            <h1>Shopping List</h1>
+          </header>
+          <main>
+            <section>
+              <AddItemForm />
+            </section>
+            <section>
+              <ShoppingList 
+                items={this.state.shoppingItems}     
+                onDeleteItem={this.handleDeleteItem}                              // 1.1 "onDeleteItem" callback prop 
+                onCheckItem={this.handleCheckItem}                                // 1.2 "onCheckItem" callback prop
+              />
+            </section>
+          </main>
+        </>
+      )
+    }
+  }
 ---------------------------------------------------------------------------------
 
----------------------------------------------------------------------------------
+
+Second, give the ShoppingList component access to the button nodes
+* The reason why you do this is so that you dont have to give the callback props to each ShoppingItem.
+* So for each ShoppingItem, we'll add (and keep) the props we want to pass through.
+------------------------------------------------------------------------------------
+    export default function ShoppingList(props) {
+      return (
+        <ul>
+          {props.items.map((item, i) =>
+            <ShoppingItem
+              key={i}
+              item={item}
+              onDeleteItem={props.onDeleteItem}                                   // passed "onDeleteItem" prop.
+              onCheckItem={props.onCheckItem}                                     // passed "onCheckItem" prop.
+            />
+          )}
+        </ul>
+      )
+    }
+------------------------------------------------------------------------------------
+
 
 
