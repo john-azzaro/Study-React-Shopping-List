@@ -336,23 +336,36 @@ Second, give the ShoppingList component access to the button nodes
 
 Third, we can now use the callback rpops when the buttons get clicked inside ShoppingItem
 -------------------------------------------------------------------------------------
-  function ShoppingItem(props) {
-    return (
-      <li>
-        <h2 style={{
-          textDecoration: props.item.checked ? 'line-through' : null,
-        }}>
-          {props.item.name}
-        </h2>
-        <button
-          type='button'>
-          check
-        </button>
-        <button
-          type='button'>
-          delete
-        </button>
-      </li>
-    )
-  }
+export default function ShoppingItem(props) {
+  return (
+    <li>
+      <h2 style={{
+        textDecoration: props.item.checked ? 'line-through' : null,
+      }}>
+        {props.item.name}
+      </h2>
+      <button 
+        onClick={props.onCheckItem}                                                 // passed "onCheckItem" prop.
+        type='button'>
+        check
+      </button>
+      <button 
+        onClick={props.onDeleteItem}                                                // passed "onDeleteItem" prop.
+        type='button'>
+        delete
+      </button>
+    </li>
+  )
+}
 -------------------------------------------------------------------------------------
+
+Fourth, Test the event handlers with the items passed in.
+--------------------------------------------------------------------------------------
+    handleDeleteItem(item) {                                                         // pass in item as a param....
+      console.log('handle delete item called', { item });                            // and log the message and the item to the console.
+    }
+
+    handleCheckItem(item) {
+      console.log('handle check item called', { item });
+    }
+--------------------------------------------------------------------------------------
