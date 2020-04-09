@@ -262,4 +262,11 @@ In React, a callback prop is a function that a parent component passes as a prop
 In the shopping list application, each ShoppingItem has two buttons: Delete and Check. We need to use
 callback props to implement the buttons.
 
-First, the App component needs to give the children (i.e. ShoppingItem, AddItemForm, and ShoppingList) callback props to
+
+
+First, the App component needs to give the children (i.e. ShoppingItem, AddItemForm, and ShoppingList) callback props.
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+
+
