@@ -253,3 +253,13 @@ At this point, the app has structure, three components
 UPDATING state
 ===================================
 So at this point, the app has structure, three components and the tests utilizing enzyme.
+However, what we lack now is exactly how to update the state that lives in the App component.
+
+To update state, you need to use CALLBACK PROPS.
+
+In React, a callback prop is a function that a parent component passes as a prop to a child component.
+
+In the shopping list application, each ShoppingItem has two buttons: Delete and Check. We need to use
+callback props to implement the buttons.
+
+First, the App component needs to give the children (i.e. ShoppingItem, AddItemForm, and ShoppingList) callback props to

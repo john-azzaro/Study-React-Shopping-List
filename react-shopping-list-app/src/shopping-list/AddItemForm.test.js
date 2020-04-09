@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import AddItemForm from './AddItemForm';
 
-describe(`AddItemForm component`, () => {
+describe(`AddItemForm component`, () => { 
   it('renders the complete form', () => {
     const wrapper = shallow(<AddItemForm />)
     expect(toJson(wrapper)).toMatchSnapshot()
