@@ -369,3 +369,44 @@ Fourth, Test the event handlers with the items passed in.
       console.log('handle check item called', { item });
     }
 --------------------------------------------------------------------------------------
+
+
+So At this point notice that if you click either the delete or the check button, you have structured it such that the 
+button MUST go through two levels of the component tree to log the message:
+
+Here's a short recap of the steps above:
+
+  1. App 
+  ------------------------------------------------------------
+      ...
+      ...
+      handleDeleteItem(item) {                                      // handle click of the delete button.
+      ______________________
+        console.log('handle delete item called');               
+      }
+      
+      render() {
+        return (
+          <ShoppingList onDeleteItem={this.handleDeleteItem}...>    // the "onDeleteItem" prop, run "handleDeleteItem".
+                        ____________
+        ) 
+      }      
+  ------------------------------------------------------------
+
+  2. ShoppingList
+  ------------------------------------------------------------
+      ...
+      ...
+      return (
+        <ShoppingItem onDeleteItem={this.onDeleteItem}...>         // the "onDeleteItem" prop, run "onDeleteItem".
+                      ____________
+      ) 
+  ------------------------------------------------------------
+
+  3. ShoppingItem
+  ------------------------------------------------------------
+      return (
+        <button onDeleteItem={this.onDeleteItem}...></button>       // the "onDeleteItem" prop, run "onDeleteItem".
+                ____________
+      ) 
+  ------------------------------------------------------------
