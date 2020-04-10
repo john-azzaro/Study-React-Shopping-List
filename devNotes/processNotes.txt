@@ -425,7 +425,7 @@ Here's a short recap of the steps above:
               {props.item.name}
             </h2>
             <button
-              onClick={() => props.onCheckItem(props.item)}                  // "onClick", the callback prop, the item will register in the console.
+              onClick={() => props.onCheckItem(props.item)}                          // "onClick", the callback prop, the item will register in the console.
               type='button'>
               check
             </button>
@@ -460,3 +460,70 @@ Here's a short recap of the steps above:
       })
     }
   ----------------------------------------------------------------------------
+
+
+
+  For the add item button, you can also use the callback prop from the App component.
+
+  First, pass in the callback prop from the App component...
+  ---------------------------------------------------------------------------
+    handleAddItem = (itemName) => {                                              // "handleAddItem" callback function.
+    console.log('handle add item', { itemName })
+    }
+
+    render() {
+      return (
+        <>
+          <header>
+            <h1>Shopping List</h1>
+          </header>
+          <main>
+            <section>
+            <AddItemForm                                                        // callback (i.e. "handleAddItem") is passed in.
+              onAddItem={this.handleAddItem}
+            />
+            </section>
+            <section>
+              <ShoppingList 
+                items={this.state.shoppingItems} 
+                onDeleteItem={this.handleDeleteItem}
+                onCheckItem={this.handleCheckItem}
+              />
+            </section>
+          </main>
+        </>
+      )
+    }
+  }
+  ---------------------------------------------------------------------------
+
+
+
+  Second, 
+
+  -----------------------------------------------------------------------------
+    import React from 'react';
+
+    class AddItemForm extends React.Component {
+      onSubmitForm = (e) => {
+        e.preventDefault()                                                          // first, prevent default submission behavior.
+        // e.target['inputName'] references `<input name='inputName' />`
+        this.props.onAddItem(e.target.itemToAdd.value)
+      }
+      render() {
+        return (
+          <form onSubmit={this.onSubmitForm}>
+            <input
+              name='itemToAdd'
+              type='text'
+              placeholder='carrots'
+              aria-label='Shopping list item'
+            />
+            <button type='submit'>Add Item</button>
+          </form>
+        )
+      }
+    }
+
+    export default AddItemForm;
+  -----------------------------------------------------------------------------
