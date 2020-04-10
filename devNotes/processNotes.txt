@@ -32,7 +32,10 @@ A way to solve this problem is using CALLBACK PROPS.
 Callback props are themselves functions that a child can invoke at any time. In this project, a callback prop would be something like the handleDeleteItem,
 handleCheckItem, or handleAddItem functions. These functions are called as props in the components we render (i.e. <ShoppingList  onDeleteItem={this.handleDeleteItem}) />.
 
-When the ancestor owns the state
+When the ancestor component owns the state but it does NOT own the nodes that will trigger the events, you use callback props.
+
+Callback props allow the descendant components to notify thier ancestor about the events on nodes that the descendants own.  The ancestor can then modify the state they 
+own based on the event.
 
 
 
