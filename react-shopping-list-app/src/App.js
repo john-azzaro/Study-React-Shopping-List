@@ -29,7 +29,13 @@ class App extends React.Component {
     })
   }
   handleAddItem = (itemName) => {
-    console.log('handle add item', { itemName })
+    const newItems = [
+      ...this.state.shoppingItems,
+      { name: itemName, checked: false }
+    ]
+    this.setState({
+      shoppingItems: newItems
+    })
   }
 
   render() {

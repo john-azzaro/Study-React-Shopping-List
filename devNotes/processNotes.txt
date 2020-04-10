@@ -499,8 +499,8 @@ Here's a short recap of the steps above:
 
 
 
-  Second, 
-
+  Second, call the callback prop when the prop is submitted.
+  * Note here that you can use the properties of the event to get the value of the input code.
   -----------------------------------------------------------------------------
     import React from 'react';
 
