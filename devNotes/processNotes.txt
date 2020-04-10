@@ -25,6 +25,17 @@ This shopping list app is going to cover the issues associated with updating the
 we'll tackle updating the state of the component in practice and utilizing callback props. This is going to cover planning and project setup as 
 well so that the workflow can be refined for the next project.
 
+When it comes to using state, you need to decide on one component that will "own" shared state. In this project, that will be done by App. And
+because when you need to update the state from descendant elements, the descendants dont have direct access to the appropriate setState method.
+A way to solve this problem is using CALLBACK PROPS. 
+
+Callback props are themselves functions that a child can invoke at any time. In this project, a callback prop would be something like the handleDeleteItem,
+handleCheckItem, or handleAddItem functions. These functions are called as props in the components we render (i.e. <ShoppingList  onDeleteItem={this.handleDeleteItem}) />.
+
+When the ancestor owns the state
+
+
+
 
 
 
@@ -526,4 +537,20 @@ Here's a short recap of the steps above:
     }
 
     export default AddItemForm;
+  -----------------------------------------------------------------------------
+
+
+
+
+  And lastly, add the callback code to the handleAddItem:
+  -----------------------------------------------------------------------------
+      handleAddItem = (itemName) => {
+        const newItems = [
+          ...this.state.shoppingItems,
+          { name: itemName, checked: false }
+        ]
+        this.setState({
+          shoppingItems: newItems
+        })
+      }
   -----------------------------------------------------------------------------
