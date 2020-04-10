@@ -438,3 +438,25 @@ Here's a short recap of the steps above:
         )
       }
   ------------------------------------------------------------------------
+
+
+  Sixth, implement the handler functions to use setState in the App component.
+  ----------------------------------------------------------------------------
+    handleDeleteItem = (item) => {
+      const newItems = this.state.shoppingItems.filter(itm => itm !== item)           // for the shopping items in state, filter to delete.
+      this.setState({                                                                 // then set the state of the shoppingItems.
+        shoppingItems: newItems
+      })
+    }
+    handleCheckItem = (item) => { 
+      const newItems = this.state.shoppingItems.map(itm => {                          // for the shopping items in state....
+        if (itm === item) {                                                           // if the itm is equal to the item, then check it.
+          itm.checked = !itm.checked 
+        }
+        return itm                                                                    // and return the item.
+      })
+      this.setState({                     
+        shoppingItems: newItems
+      })
+    }
+  ----------------------------------------------------------------------------
